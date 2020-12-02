@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { View, FlatList } from "react-native";
 import ImageThumbnail from "../ImageThumbnail";
 
@@ -22,5 +23,16 @@ const GalleryList = ({ images, onLongPress, selectedImages }) => (
     />
   </View>
 );
+
+GalleryList.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      file: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  onLongPress: PropTypes.func.isRequired,
+  selectedImages: PropTypes.array.isRequired,
+};
 
 export default GalleryList;
